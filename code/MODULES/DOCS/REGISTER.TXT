@@ -1,0 +1,253 @@
+The guitar reference is shareware. This file documents how you
+can register your copy and obtain the full version or upgrade
+your registered copy to the newest version.
+
+Continued development can only be guaranteed by registering, otherwise
+development proceeds according to the whims, needs and desires of the
+programmer.
+
+If you find the program useful then we hope you will register.
+
+Registration
+------------
+
+The current version of the guitar reference is version 1.1
+
+In order to register version 1 the base price is 5 pounds sterling.
+
+This should be sent to:
+        Denesh Bhabuta
+        Dept. Al's Guitar stuff
+        203 Parr Lane   
+        Unsworth
+        Bury    
+        Lancashire
+        Bl9 8JW   
+
+cheques/postal orders drawn on a British Bank made payable to Denesh 
+Bhabuta
+
+For this you will receive the latest update of version 1, currently
+this is version 1.1. This is the full version and allows the saving
+and loading of scales and tunings. Also included are 57 scales and
+46 tunings.
+
+You will be notified by post when the next update is available. If you would
+like to be notified of further versions then include a SAE (UK only) or 
+increase the registration fee by 50 pence for each upgrade you would like to 
+be notified for.
+
+e.g
+
+To be notified for 2 upgrades then either include a SAE (UK only) or 
+increase the registration fee to 5.50 sterling. The first upgrade 
+notification is free.
+
+Upgrades
+--------
+
+o Minor Upgrades
+
+Minor upgrades (e.g. moving from v1.0 to 1.1 or 1.3 etc) will be available
+free as diff files on various ftp sites although the official site is
+
+micros.hensa.ac.uk
+
+These will come with full instructions on how to upgrade your software.
+
+Minor upgrades will be available at a nominal charge (to cover costs) from:
+
+        Denesh Bhabuta
+        Dept. Al's Guitar stuff
+        203 Parr Lane
+        Unsworth
+        Bury   
+        Lancashire
+        Bl9 8JW  
+
+These will cost 2.50 and you will be sent the latest upgrade of the version 
+you have registered.
+
+If you are in the UK then you can send a SAE (Jiffy bag) and a blank disk
+and it will be done free of charge.
+
+
+o Major Upgrades
+
+Major Upgrades ( moving from version 1 to version 2) will require an upgrade
+fee. This will be cheaper than registering since the price of registering
+the product will increase with each major version.
+
+Major upgrades are projected to cost as follows:
+
+        1 version upgrade (e.g 1 to 2, or 2 to 3):      5 pounds sterling
+        2 version upgrade (e.g 1 to 3, or 2 to 4):      7.50 pounds sterling
+        3 version upgrade (e.g 1 to 4):                 10 pounds sterling
+
+
+We reserve the right to change these prices if we feel the need.
+
+Registered users will receive notification of any price changes with their
+update information.
+
+
+o Upgrade notification
+
+Notification of upgrades will be given free if you have an Email address.
+Please include this when registering.
+
+Otherwise UK notifications can be obtained free by enclosing SAEs with
+your registration, or sending us a SAE after each notification.
+
+For users outside the UK notification can be obtained by adding 50 pence
+onto the registration fee for each notification required.
+
+Please let us know if you would like to be notified only for major upgrades
+or starting at a specific version etc
+
+We will try to notify as many different sources as possible of upgrade 
+information, e.g usenet, magazines, bulletin boards etc
+
+
+
+Thanks
+------
+
+Thank you for taking the time to read and understand this document. We are
+trying to keep the registration and upgrade prices low but we can only
+do this with your help.
+
+If you are not going to register at the moment, but think that you might 
+if the program
+had a certain feature or did something in a diferent way then please let us
+know. 
+
+We want your comments, criticisms and bug reports.
+
+Send any queries/comments/criticisms to:
+Email:
+danny@micros.hensa.ac.uk
+D.Bhabuta@cent1.lancs.ac.uk
+dbhabuta@cix.compulink.co.uk (from July)
+richara@wmin.ac.uk
+
+Post:
+        Denesh Bhabuta
+        Dept. Al's Guitar stuff
+        203 Parr Lane
+        Unsworth
+        Bury   
+        Lancashire
+        Bl9 8JW  
+
+
+
+
+Registration form
+-----------------
+
+This form has been provided either to be printed out or used as a guide
+for the kind of information we would like to recieve when you register.
+
+---------------------8<---------cut here--------8<-----------
+
+Name: __________________________________
+Address:_________________________________
+        _________________________________
+        _________________________________
+        _________________________________
+phone: __________________________________
+Email: __________________________________
+
+Computer details:
+        Type:
+        Memory:
+        OS version:
+        Monitor Type:
+        Drives:
+        Extras:
+
+Which version are you registering?: _____
+cost for registering this version: ______
+
+Upgrade notification:
+Email address: _________________________________
+# of SAEs (UK Only):_________________________________
+extra money included (Non-UK) (50p per notification): _______________________
+types of upgrade notification?
+ALL  _____      MAJOR ONLY _________  ODD NUMBERS ONLY _________
+
+starting at: __________
+
+money included:
+        registration fee: ________
+        upgrade costs:    ________
+        total:            ________
+
+cheques payable to Denesh Bhabuta (drawn on a British Bank)
+
+send this form to:
+        Denesh Bhabuta
+        Dept. Al's Guitar stuff
+        203 Parr Lane
+        Unsworth
+        Bury   
+        Lancashire
+        Bl9 8JW  
+
+------------------------------------8< cut here -----------
+
+
+Upgrade form
+------------
+
+This form can be used to upgrade your guitar reference program.
+It can be printed out or used as a basis for your own letter.
+
+---------------8<-----------cut here-------------8<-----------
+
+Name: ___________________________________
+Address:_________________________________
+        _________________________________
+        _________________________________
+        _________________________________
+phone: __________________________________
+Email: __________________________________
+
+registration Number: ________________________
+
+Upgrading to version: _____
+cost: _______
+
+I wish to be notified of upgrades as follows:
+Same as before: ______
+Details below: _______
+
+Upgrade notification:
+Email address: _________________________________
+# of SAEs (UK Only):    _________________________________
+extra money included (Non-UK) (50p per notification): _______________________
+types of upgrade notification?
+ALL  _____      MAJOR ONLY _________  ODD NUMBERS ONLY _________
+
+starting at: __________
+
+
+Money included:
+        Upgrade price: _______
+        Extras:        _______
+        Total:         _______
+
+
+cheques payable to Denesh Bhabuta (drawn on a British Bank)
+
+send this form to:
+        Denesh Bhabuta
+        Dept. Al's Guitar stuff
+        203 Parr Lane
+        Unsworth
+        Bury
+        Lancashire
+        Bl9 8JW
+
+----------------8<----------cut here------------8<--------

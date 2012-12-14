@@ -1,0 +1,27 @@
+Licence & Disclaimer Document for The Guitar Reference
+
+This is a conditions of use document for the Guitar Reference.
+
+The software is copyrighted to Alan Richardson.
+
+You may make backup copies of the program purely for archival purposes.
+
+Ehmm...and now to protect myself.
+
+This program has been tested, and used extensively by the author. However
+you use this program at your own risk. I take no resposibility for anything
+happening to your machine, hard drive, disk collection, record collection,
+front garden or garage while using this program. Should the world outside
+your window start making hideous noises when you go to bed then I take
+no responsibility for your loss of sleep. I take the blame for nothing.
+
+The above paragraph has been written for my protection to avoid any
+possible law suites. But on a friendly note, the program has been sitting
+running on my hard drive for the last 6 or 7 months and nothing has gone
+wrong yet.
+
+
+Thanks
+
+Alan Richardson         4/6/94
+

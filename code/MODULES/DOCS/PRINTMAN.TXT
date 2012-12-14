@@ -1,0 +1,69 @@
+Guitar Reference         -    Printer driver manual
+
+This is a technical manual  to  allow  you  to create your own printer
+drivers. If you  want  to  either  amend  the  ones  provided with the
+program or create a new one from scratch.
+
+This file need not be  read  by  the  normal  user  unless you want to
+create a printer driver.
+
+The printer driver file is a  normal  ascii  text file, with each line
+ending with a line feed.
+
+A comment line begins with a % and  the comment lasts until the end of
+the line, as an example.
+
+% this line is a comment
+% so is this one.
+
+There are a number  of  commands  stored  in  the printer driver file.
+These all begin with a  two  character  code  and  are followed by the
+commands data and end in a  full  stop.  Multiple data items should be
+separated by comments.
+
+The data items can be either,  a  number, or a quoted character string
+of any length.
+
+Numbers are generally used to represent  those items which do not have
+an ascii equivalent.
+
+The commands are as follows.
+
+NM - Printer driver name.
+LF - Line Feed.
+NP - New Page.
+FS - Graphic printed for a normal fret bar.
+F1 - Graphic printed for a fret bar on the first string.
+F6 - Graphic printed for a fret bar on the sixth string.
+SS - Graphic printed to represent a string.
+NS - Graphic printed to represent a note.
+RS - Graphic printed to represent a root note.
+LS - Graphic printed to represent a relative symbol.
+NL - Graphic printed to represent a normal note and a relative note.
+RL - Graphic printed to represent a root note and a relative note.
+NN - Graphic printed to represent no note - typically a string.
+SP - Graphic printed to represent a space.
+FD - the fret description for a normal fret
+F0 - the fret description for open notes.
+
+The driver file must end with the following text
+
+END DRIVER
+
+All text after the END DRIVER text is ignored.
+
+The fret descriptions tell the program  what  to print when printing a
+note, they take the form of  a  quoted string containing the following
+characters.
+
+| - this represents a fret bar
+- - this represents a string symbol
+  - space represents a space
+o - represents a note.
+
+Use the supplied printer driver  files  as  examples for creating your
+own. The standard is not fixed and may change with time.
+
+If any of the commands are  not  present  then the default text driver
+command is used. See the EPSTEXT.DRV file for details.
+

@@ -1,0 +1,69 @@
+% Graphics printer driver, IBM codes i.e ESC "K" 
+
+NM "IBM Graphics Printer".		
+% driver name
+
+LF 10.					
+% line feed
+
+NP 12.					
+% new page
+
+% Graphics explanation
+%
+%  Mode is K for normal, L for double density
+%          Y double density double speed
+%          Z quadruple density
+%    check your manual for more !!!
+%
+% n1 and n2 specify the number of columns
+% m... is the data
+%  OK!!!
+%
+%  ESC MODE   M1   M2
+%      | n1 n2 |   |
+%  |   |  | |  |   |
+FS 27,"K",2,0,255,255.					
+% normal fret
+
+F1 27,"K",2,0,31,31.					
+% fret on string 1 
+
+F6 27,"K",2,0,248,248.					
+% fret on string 6
+
+SS 27,"K",8,0,24,24,24,24,24,24,24,24.					
+% string symbol
+
+NS 27,"K",8,0,0,24,36,74,82,36,24,0.					
+% note symbol
+
+RS 27,"K",8,0,0,24,60,126,126,60,24,0.					
+% root symbol
+
+LS 27,"K",8,0,0,24,36,66,66,36,24,0.					
+% relative symbol
+
+NL 27,"K",8,0,60,90,165,203,211,165,90,60.					
+% normal and relative
+
+RL 27,"K",8,0,60,90,187,255,255,187,90,60.					
+% root and relative
+
+NN 27,"K",8,0,24,24,24,24,24,24,24,24.					
+% no note
+
+SP 27,"K",8,0,0,0,0,0,0,0,0,0.					
+% space
+
+% fret descriptions	|,-, ,o
+
+FD "-o-|".				
+% normal fret
+
+F0 " o |".					
+% open notes
+
+END DRIVER
+
+IGNORED

@@ -1,0 +1,55 @@
+% Text printer driver, epson codes
+
+NM "Text Print".		
+% driver name
+
+LF 10.					
+% line feed
+
+NP 12.					
+% new page
+
+FS "|".					
+% normal fret
+
+F1 "+".					
+% fret on string 1 
+
+F6 "+".					
+% fret on string 6
+
+SS "-".					
+% string symbol
+
+NS ".".					
+% note symbol
+
+RS ",".					
+% root symbol
+
+LS "'".					
+% relative symbol
+
+NL ":".					
+% normal and relative
+
+RL ";".					
+% root and relative
+
+NN " ".					
+% no note
+
+SP " ".					
+% space
+
+% fret descriptions	|,-, ,o
+
+FD " o |".				
+% normal fret
+
+F0 " o |".					
+% open notes
+
+END DRIVER
+
+IGNORED

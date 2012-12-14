@@ -1,0 +1,7 @@
+DEFINITION MODULE ACC;
+CONST
+
+	hires_main_acc=    0;
+
+
+END ACC.

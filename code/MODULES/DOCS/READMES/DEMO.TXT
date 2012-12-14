@@ -1,0 +1,35 @@
+README.TXT for Guitar Reference Demo Version
+
+The Demo version has a number of features disabled, saving & loading 
+of scales, tunings, paths and defaults. Printing is available, but 
+you may only print to disk. You CAN load printer drivers. This is done
+by clicking on the driver name on the print dialogue.
+
+This version of the Guitar Reference is shareware and may be 
+distributed free of charge provided all files are provided, complete,
+and in the original form.
+
+If you like this program and would like to order the upto date full version 
+then please read the REGISTER.TXT file supplied and follow the instructions
+within.
+
+The full version currently has 57 Scales in the database, and 46 Tunings.
+Scales and tunings can be added and saved.
+
+The Guitar Reference will be developed and upgraded as and when I need a 
+new feature added. Unless of course I get support from happy, gleeful users.
+Then I can work with an incentive.
+
+Please do get in touch and tell me what features you would like to see
+prioritised, ignored, bug fixed etcetera etcetera.
+
+
+Thank you.
+
+        Alan Richardson
+
+    -    __
+   / \   ||
+  /   \  ||  _   _
+ /-----\ || | | | |
+/       \/\_\_/\| \_

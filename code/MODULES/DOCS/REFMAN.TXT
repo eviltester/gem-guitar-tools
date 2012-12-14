@@ -1,0 +1,724 @@
+Guitar Reference      - Reference Manual
+
+This document  is  the  reference  manual  for  the  Guitar  Reference
+Program. It is not intended  to  be  a  tutorial  since the program is
+designed to be used and experimented with, refer to this document only
+to find out more about a certain feature, or if you are uncertain what
+a feature does, or even if you think that there are more features that
+you don't know about.
+
+This manual is under constant  revision,  as  is the program, and both
+will mature and improve over time.
+
+Enjoy.
+
+********
+Contents
+********
+
+1.0   Scales
+1.1     Loading Scales
+1.2     Saving Scales
+1.3     Selecting a scale from memory
+1.4     Saving a scale to memory
+1.5     Renaming a scale
+1.6     Saving a scale under a different name
+1.7     Sorting Scales
+1.8     Deleting a scale
+1.9     Creating a new scale
+1.9.1         Adding notes
+1.9.2         Deleting notes
+1.A     Printing the scales
+1.B     Display options
+1.C     Transposing the Scales
+
+2.0   Tunings
+2.1     Loading Tunings
+2.2     Saving Tunings
+2.3     Selecting a Tuning from memory
+2.4     Saving a Tuning to memory
+2.5     Deleting a tuning
+2.6     How to use the tuning dialogue
+2.6.1        Setting the volume
+2.6.2        Setting the midi channel
+2.6.3        Selecting the Note Length
+2.6.4        Changing Octaves
+2.6.5        Changing Notes
+2.6.6        Hearing the Note
+2.6.7        Selecting MIDI/CHIP Sounds
+
+3.0   The text window
+
+4.0   The program
+4.1     Defaults
+4.1.1       What are the defaults
+4.1.2       Saving the defaults
+4.1.3       Loading the defaults
+4.2     Paths
+4.2.1       What are the paths
+4.2.2       Changing the paths
+4.2.3       Saving the paths
+4.2.4       Loading the paths
+4.3     Starting the program
+4.4     Quiting the program
+4.5     About
+4.6     Installation
+
+5.0   The menu bar
+
+6.0   The keyboard
+6.1     Scale Layout Window
+6.2     The text window
+
+
+************
+1.0   Scales
+************
+1.1 Loading Scales
+------------------
+        Loading the scales is done by selecting 'Load Scales' from the
+File menu bar.
+
+        The file selector will appear and you select which scales file
+to load. Choosing cancel returns  you  to  the program with no changes
+made.
+
+        This will replace the scales currently in memory.
+
+        A Scales file can be set  to  load  when the program is run by
+setting the scales path in the defaults file. See the Defaults section
+for more details.
+
+
+1.2 Saving Scales
+-----------------
+        Saving scales is done  by  selecting  the 'Save Scales' option
+from the Files menu bar.
+
+        The file selector dialogue will appear and you choose the name
+of the scales file to  write  to.  Choosing  cancel returns you to the
+program without saving the scales.
+
+        If the file already exists then  a dialogue will appear giving
+you the option of saving to this file or cancelling the operation.
+
+1.3 Selecting a scale from memory
+----------------------------------
+        Selecting a scale already in  memory  is  done by choosing the
+'Select Scale' option in the  Scales  menu  or by pressing 'Alternate'
+and 's' at the same time.
+
+        A text window will appear with the available scales displayed.
+
+        You can choose one of these scales in a number of ways.
+
+        * double click on the scale name
+        * single click on the scale so that it is highlighted and then
+          close the window
+        * Use the keyboard cursor keys to highlight the scale name and
+          then press 'Return'
+
+       If a scale name  has  been  highlighted,  clicking once on the
+scale name will de-select it or pressing 'Undo' will also deselect it.
+
+        Leaving the  window  with  no  scale  highlighted,  either  by
+closing the window or by pressing return, means that no scale has been
+chosen and the same scale will be displayed.
+
+1.4 Saving a scale to memory
+----------------------------
+        Saving a Scale  to  memory  is  done  by  selecting the 'Store
+Scale' option in the 'Scales' menu.
+
+        A dialogue will appear:
+
+        +---------------------------------------+
+        ! ---                                   !
+        ! \?/                                   !
+        !  V   This will overwrite the          !
+        !      current version of the scale     !
+        !      held in memory                   !
+        !                                       !
+        !        +=======+  +--------+          !
+        !        + Store +  + Cancel +          !
+        !        +=======+  +--------+          !
+        +---------------------------------------+
+
+        Clicking on Cancel will abort the operation.
+
+        Clicking on Store or pressing  'Return' will continue with the
+Store operation.
+
+1.5 Renaming a scale
+--------------------
+        Renaming a  scale  is  done  by  selecting  'Rename'  from the
+'Scales' menu bar.
+
+        A dialogue will appear with  an  editable  field for the scale
+name. Clicking on OK or  pressing  'Return'   renames the scale to the
+text in the editable field. Pressing  Cancel aborts the  operation and
+the Scale name remains unchanged.
+
+1.6 Saving a scale under a different name
+-----------------------------------------
+        Scales can be saved  under  different  names  by selecting the
+'Store As ...' option from the Scales menu.
+
+        A dialogue appears with an editable  field for the scale name.
+Clicking on OK or  pressing  'Return'  will  continue with the Storing
+operation. Clicking on Cancel aborts  the  operation  and the scale is
+not stored to memory.
+
+        The program checks to see if a scale with the same name exists
+and if so tells you. You are  then  given the option of cancelling the
+operation, renaming the scale or of storing it.
+
+        The program also checks to see if a scale exists with the same
+notes and if so the same dialogue is presented.
+
+        This operation is fundamentally different from Rename since is
+creates a new  scale  in  memory  with  the  edited  name  rather than
+renaming the current scale.
+
+        This operation is useful for adding new scales to memory.
+
+1.7 Sorting Scales
+------------------
+        Sorting Scales is done when  the  'Sort Names' option has been
+ticked on the Scales menu.
+
+        Sorting scales  is  only  done  when  Selecting  a  Scale from
+memory. There may be a slight delay before selecting a scale when this
+option is first used.
+
+1.8 Deleting a scale
+--------------------
+        A scale can be  deleted  by  choosing  'Delete Scale' from the
+Scales menu bar.
+
+        The text window will be  displayed  with  a list of scales. In
+order to delete one highlight it and exit the window. If the window is
+exited without a highlighted scale then nothing is deleted.
+
+        Highlighting a scale  can  be  done  by  clicking  on a scale,
+another single click on the scale will unhighlight it. Double clicking
+on the scale name will delete that scale.
+
+        The scale can also  be  deleted  by  using the keyboard cursor
+keys to highlight the  scale  name   and   then   pressing 'Return' to
+leave the  window.  'Undo'   will    cause   any   highlighted   scale
+to  be unhighlighted.
+
+
+1.9 Creating a new scale
+------------------------
+1.9.1 Adding notes
+        Notes can be added to a scale in a number of ways.
+
+        * Clicking on any of the notes on the Notes pull down menu.
+          The notes in the current scale are shown with a tick to
+          their left.
+        * Double clicking on any fret on the screen will add that
+          note.
+        * Single clicking on any fret will bring up a dialogue
+          of information about that fret. One of the boxes of
+          information tells you whether or not that note is
+          in the scale, highlighting the YES box will add
+          that note to the scale.
+
+
+1.9.2 Deleting notes
+        Notes can be removed from a scale in a number of ways.
+
+        * Clicking on any of the notes on the Notes pull down menu.
+          The notes in the current scale are shown with a tick to
+          their left, those that are not have no tick.
+        * Double clicking on any note on the screen will remove
+          that note.
+        * Single clicking on any fret will bring up a dialogue
+          of information about that fret. One of the boxes
+          of information tells you whether or not that note is
+          in the scale, highlighting the NO box will remove
+          that note from the scale.
+
+1.A Printing the scales
+-----------------------
+        The Scale can be  printed  by  clicking  on the 'Print' option
+from the File Menu.
+
+        This will display the print options dialogue.
+
+        +----------------------------------------+
+        |         +-------------------+          |
+        |         |   Print Options   |          |
+        |         +-------------------+          |
+        |                                        |
+        |  +-------------------------------+     |
+PRINTER------>  Epson Graphics Printer     |     |
+NAME    |  +-------------------------------+     |
+        |                                        |
+        |               Heading                  |
+        |  +-------------------------------+     |
+HEADER------->____________________________ |     |
+TEXT    |  | _____________________________ |     |
+        |  +-------------------------------+     |
+        |                                        |
+        |               Trailer                  |
+        |  +-------------------------------+     |
+TRAILER------>____________________________ |     |
+TEXT    |  | _____________________________ |     |
+        |  +-------------------------------+     |
+        |                                        |
+TEXT----------->TAB 05  FRETS 13  START 00<--------START
+TAB     | --------------------^                  | FRET
+        | |   +=======+ +------+ +--------+      |
+NUMBER-----   | PRINT | | DISK | | CANCEL |      |
+OF FRETS|     +===|===+ +--|---+ +---|----+      |
+        +---------|--------|---------|-----------+
+                PRINT    PRINT TO   CANCEL
+                         DISK
+
+        The printer name lists the  current  printer driver loaded. To
+load a new driver click on this portion of the screen.
+
+        The text in the Header window  is  printed before the scale. A
+number of variables can be written in here.
+
+        The text in the Trailer window  is printed after the scale. It
+uses the same rules as the Header window, and these are:
+
+        o The text is printed with no new lines
+        o All text is printed to the printer
+        o To print a new line use \n
+        o To print a \ use \\
+        o &name will print the name of the scale
+        o &key will print the name of the key
+        o &notes will print the notes in the scale
+        o &symbols will print the key of the symbols used
+
+For more information on printers see the Printer driver manual.
+
+
+
+1.B Display Options
+-------------------
+        The way in which the scales can  be displayed on screen can be
+changed in a number of  ways  by  selecting the 'Display Options' item
+from the 'Scales' menu.
+
+        A dialogue will appear allowing you  to change the pixel width
+and height of the frets. This can be from 01 to 99 pixels.
+
+        The number of frets can be  altered  from  01 to 24. This does
+not include the open notes so when  1  fret is chosen - the first fret
+and the open notes are displayed.
+
+        The fret numbering refers to  the fret numbers displayed under
+the graphical scales. The start fret refers to the first fret you want
+numbered  this can be from 0 to 24. The Increment controls which other
+frets  are numbered. If  the  increment  is  3  then  every third fret
+(3,9,12,15,18,21,24) will be numbered.
+
+        The miscellaneous box provides a  number  of buttons which can
+be either highlighted (on) or clear (off). These are explained below:
+
+        * ROOT - differentiate root note from other scale notes.
+        * RELATIVE - also display the relative scale
+        * NUMBERS - display the fret numbers
+        * SCALE NAME - display the scale name in the information bar.
+        * KEY NAME - display the current key in the information bar.
+
+        The Notes box provides 3 buttons:
+
+                CIRCLE  SQUARE  TEXT
+
+        * CIRCLE displays the notes on the fretboard as circles.
+        * SQUARE displays the notes on the fretboard as diamonds(!).
+        * TEXT displays the notes on the fretboard by their name.
+
+        (Circle Slows the displaying of the notes on-screen)
+
+
+        Clicking on OK or pressing  'Return'  will  exit to the guitar
+program with the current options. Clicking on CANCEL will exit without
+using any changes input.
+
+1.C Transposing the Scales
+--------------------------
+        Changing the key is simply  a  matter of selecting a different
+Key from the Key menu. The current  key  will have a tick beside it so
+changing to a new key involves clicking on a new item.
+
+        The scale will be redrawn in the different key, and all future
+scales will be displayed in this key until it is changed.
+
+
+***********
+2.0 Tunings
+***********
+
+2.1 Loading Tunings
+-------------------
+        All tunings operations are selected from the Tunings dialogue.
+This is accessed by selecting 'Tunings' from the 'File' menu.
+
+        Loading a new set of tunings is done by clicking on the 'LOAD'
+button.
+
+        The file selector will  appear,  double  clicking  on a tuning
+file name or pressing OK will load in the tuning file. Pressing Cancel
+will return to the tunings form with the old tunings still in memory.
+
+2.2 Saving Tunings
+------------------
+        All tunings operations are selected from the Tunings dialogue.
+This is accessed by selecting 'Tunings' from the 'File' menu.
+
+        Saving the Tunings is done by clicking on the 'SAVE' button.
+
+        A file selector will appear and  you  type  in the name of the
+file you wish to save the tunings  under. Clicking on OK will save the
+tunings. Clicking on Cancel will abort  the  process and return you to
+the tunings dialogue.
+
+2.3 Selecting a Tuning from memory
+----------------------------------
+        All tunings operations are selected from the Tunings dialogue.
+This is accessed by selecting 'Tunings' from the 'File' menu.
+
+        Selecting a tuning  from   memory   is   done  by  clicking on
+the 'SELECT' button. A text window will  appear and the desired tuning
+can be selected.
+
+        See section 3.0 to find  out  how  to  use  the text window to
+select items.
+
+2.4 Saving a Tuning to memory
+-----------------------------
+
+        All tunings operations are selected from the Tunings dialogue.
+This is accessed by selecting 'Tunings' from the 'File' menu.
+
+        A tuning can be saved  to  memory  by  clicking on the 'STORE'
+button.
+
+        A dialogue will appear  and  the  tuning  name can be changed.
+Clicking on OK or pressing 'Return'  will  store the tuning to memory.
+Clicking on CANCEL will abort the operation.
+
+2.5 Deleting a tuning
+---------------------
+
+Click on Delete in the Tunings  dialogue.  The text window will appear
+with a list of tunings, these  can  be  deleted by double clicking, or
+exiting the window with one highlighted.
+
+
+2.6 How to use the tuning dialogue
+----------------------------------
+
+        The tuning dialogue can  be  called  up by selecting 'Tunings'
+from the 'File' menu bar.
+
+2.6.1 Setting the volume
+        The volume of  the  internal  chip  sounds  can  be altered by
+        clicking on the SETUP button underneath the CHIP button.
+        A dialogue appears allowing you to enter a value from 1 to 15.
+        Pressing OK returns  to  the  program  with  the  volume set,
+        pressing CANCEL aborts the operation.
+
+2.6.2 Setting the midi options
+        The midi channel that  the  tuning  notes  are  sent to can be
+        changed by clicking on the SETUP button beneath the MIDI
+        button.
+
+        A dialogue appears allowing the  changing  of a number of MIDI
+        options.
+
+        The Channel can be changed from 1 to 16.
+
+        The velocity can be changed from 0 to 127.
+
+        The note off message can  either  be  a  note off message or a
+        message of velocity 0.  Normally  this  should   be  'NOTE
+        OFF' but in order to ensure compatibility  with   older   MIDI
+        instruments  a 'VELOCITY 0' option is also provided.
+
+        Clicking on OK or pressing 'Return'  exits to the program with
+        these changes in place. Clicking on CANCEL returns to the
+        program with no changes made.
+
+2.6.3 Setting the note length
+        The length of the note played  during tuning can be altered by
+        clicking either on the 'PLAY' button or on the 'NOTE' button.
+
+        The length of the  note  can  then  be  altered  from  0 to 99
+        seconds.
+
+        When playing the note  it  can  be  shut  off  by pressing the
+        keyboard.
+
+2.6.4 Changing Octaves
+        The octave which a particular note is played at can be altered
+        by pressing on the octave button [<-  d  ->] next to the note
+        you wish to drop or raise.
+
+
+        A  small  dialogue  will   appear   with   a  highlighted  box
+        representing the current octave,  this  can  be  raised  or
+        lowered by clicking on the desired octave.
+
+        Clicking on OK or pressing 'Return' will return to the program
+        with the octave set. Clicking on CANCEL will abort the
+        operation.
+
+
+2.6.5 Changing Notes
+        The notes associated with each string can be raised or lowered
+        by clicking on the arrowed buttons next to the Note name box.
+
+        Lower     Raise
+          !         !
+         [<][  E  ][>]
+
+2.6.6 Hearing the Note
+        The actual note can be played  by  clicking on the play button
+        (($)) associated with the note. This will play the note
+        through either the MIDI port or the soundchip.
+
+2.6.7 Selecting MIDI/CHIP sounds
+        Notes can be played either  through  the  soundchip or via any
+        MIDI instrument connected to the MIDI port.
+        Selecting soundchip sounds is  done  by  clicking  on the CHIP
+        button.
+
+        Selecting MIDI instruments   is   done   by   clicking  on the
+        MIDI button.
+
+*******************
+3.0 The text window
+*******************
+
+        The text window is  used  in  a  number  of  situations in the
+program and it is  useful  to  know  how  it  works.  It  is used when
+selecting a scale, deleting a scale, selecting a tuning, or deleting a
+tuning.
+
+
+        Basically the item to be  selected  can  be double clicked on.
+This will select it, or delete it and exit the window.
+
+        The vertical scroll bar can be  used  to  view the rest of the
+options.
+
+        Single clicking on an item will highlight it. If the window is
+closed (exited) then this item will be selected.
+
+        Any highlighted item can be  deselected  by pressing 'Undo' or
+by single clicking on it again.
+
+        The keyboard cursor keys  can  be  used  to  scroll around the
+items. Pressing cursor down, will highlight and move to the next item.
+Pressing cursor up will highlight the item above.
+
+        The screen can be scrolled  by  moving  down off the bottom of
+the screen or moving up of the  top. Pressing 'Shift' and cursor up or
+cursor down will page up or down  the list. If any item is highlighted
+when paging then the relative position will be maintained.
+
+        Any  highlighted   item   can    be   selected   by   pressing
+'Return'. 'Undo' will deselect it.
+
+***************
+4.0 The program
+***************
+
+4.1 Defaults
+------------
+4.1.1  What are the defaults
+        The defaults are all the changeable items in the program,
+        things like note size, and the other display options, and
+        the tuning options.
+
+4.1.2  Saving the defaults
+        The defaults can be saved by choosing 'Save Defs' from the
+        'File' menu. The file selector appears and you type in the
+        name of the file to save the defaults as.
+
+4.1.3  Loading the defaults
+        A defaults file can be loaded either by selecting 'Load Defs'
+        from the 'File' menu. Or by setting the defaults path so that
+        the file is loaded when the file is started. The next section
+        explains this.
+
+
+4.2 Paths
+---------
+4.2.1  What are the paths
+        The Paths are the various files loaded in when the program is
+        first run. The paths are stored in a file called 'PATHS.MAN'
+        which must appear in the same directory as the main program.
+
+        To see the currently set up paths and to change them click on
+        'Paths' from the 'File' menu.
+
+        The scales path identifies the scales file to load at run
+        time.
+        The tunings path identifies the tunings file to load at run
+        time.
+        The defaults path identifies the defaults file to load at run
+        time.
+        The printer path identifies the printer driver to load at run
+        time.
+
+4.2.2  Changing the paths.
+        The paths can be altered by clicking on the path to change.
+        The File selector will appear and the file to set the path to
+        should be chosen.
+
+        Once changed the OK button must be clicked in order for the
+        program to recognise the changes.
+
+        Please note that the changes will not take effect unless the
+        program is reloaded.
+
+4.2.3  Saving the paths
+        The paths can be saved by clicking on the SAVE button. The
+        program will automatically save the paths to the file called
+        'PATHS.MAN' in  the program directory.
+
+4.2.4  Loading the paths
+        The paths are loaded from the 'paths.man' file when the
+        program is run.
+
+
+4.3 Starting the program
+------------------------
+        The program is started by  double clicking on the GUITAREF.PRG
+icon or GUITAREF.PRG filename from the desktop.
+
+        The program uses GEM  and  as  such  can  NOT  be  run from an
+autofolder.
+
+        The program is compatible with utilities such as HotWire which
+allow running of programs with a few mouse clicks or keyboard presses.
+If you do not have a program such as this then just start the program
+from the desktop.
+
+4.4 Quiting the program
+-----------------------
+        Quiting the program  is  done  by  selecting  'Quit'  from the
+'File' menu bar. A dialogue will  appear  asking  you if you are sure.
+Press Quit or Return to leave the   program. Cancel will return you to
+the program.
+
+4.5 About
+---------
+        Information about the program can be obtained by selecting the
+'About' item on the  Desk  pull  down  menu.  This  not only tells you
+useful stuff like the name of  the  program  and who wrote it etc, but
+also  details the number of  scales  and  tunings loaded, the time and
+date, version number and release  date  -  Useful  for checking if you
+have the most recent version. If not ORDER IT NOW.
+
+4.6 Installation
+----------------
+        See Install.man in the docs folder on the disc.
+
+****************
+5.0 The menu bar
+****************
+
+Section
+No
+        Desk    File    Scales  Key     Notes
+      -------
+4.5  + About +
+      -------
+
+        Desk    File    Scales  Key     Notes
+               -------------
+1.1           + Load Scales +
+1.2           + Save Scales +
+              +-------------+
+2.0           + Tunings     +
+              +-------------+
+4.2           + Paths       +
+4.1.3         + Load Defs   +
+4.1.2         + Save Defs   +
+              +-------------+
+1.A           + Print       +
+              +-------------+
+4.4           + Quit        +
+               -------------
+
+        Desk    File    Scales  Key     Notes
+                       -----------------
+1.7                   + Sort Names      +
+1.3                   + Select Scale    +
+                      +-----------------+
+1.5                   + Rename          +
+1.4                   + Store Scale     +
+1.6                   + Store As ...    +
+                      +-----------------+
+1.8                   + Delete Scale    +
+                      +-----------------+
+1.B                   + Display Options +
+                       -----------------
+
+        Desk    File    Scales  Key     Notes
+                                -----
+1.C                            +  A  +
+                               +A# Bb+
+                               +  B  +
+                               +  C  +
+                               +C# Db+
+                               +  D  +
+                               +D# Eb+
+                               +  E  +
+                               +  F  +
+                               +F# Gb+
+                               +  G  +
+                               +G# Ab+
+                                -----
+
+        Desk    File    Scales  Key     Notes
+                                        -----
+1.9                                    +  A  +
+                                       +A# Bb+
+                                       +  B  +
+                                       +  C  +
+                                       +C# Db+
+                                       +  D  +
+                                       +D# Eb+
+                                       +  E  +
+                                       +  F  +
+                                       +F# Gb+
+                                       +  G  +
+                                       +G# Ab+
+                                        -----
+
+
+****************
+6.0 The keyboard
+****************
+6.1 The scale layout window
+
+        Cursor keys           - scroll window up, down, left or right.
+        'Shift' + Cursor Keys - page the window up, down, left or
+                                right.
+        Alt + S               - Select Scale
+        Help                  - Shows notation used to draw scale.
+
+6.2 The Text Window
+
+        Cursor up, down       - scrolls window up, down and highlights
+                                option.
+        Undo                  - deselects a highlighted option.
+        Return                - Exits the window and chooses the
+                                current option.
+        Escape                - Exits the window with no selection.
+        Shift + Cursor up, down - Page up and down
+        Help                  - List of keys
+
+

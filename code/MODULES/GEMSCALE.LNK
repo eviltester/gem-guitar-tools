@@ -1,0 +1,26 @@
+
+from 	caut.o
+
+gemscale.o
+scalegem.o
+alscale.o
+algem.o
+note.o
+fsel.o
+error.o
+almidi.o
+textwin.o
+drawscl.o
+ccscales.o
+tuning.o
+paths.o
+printer.o
+keys.o
+global.o
+
+LIBRARY lcg.lib+lc.lib+lcm.lib
+
+VERBOSE
+XADDSYM
+to guitaref.prg
+

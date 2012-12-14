@@ -1,0 +1,88 @@
+Installation Manual
+-------------------
+
+Hard drive Installation:
+        Simply copy all the files and  folders into a directory on the
+hard drive.
+
+Floppy drive Installation:
+        Make a backup of the supplied  disk and always use your backup
+disk to run the program.
+
+
+If you wish to alter the  configuration  in  some way then always make
+sure that the  GUITAREF.PRG, PATHS.MAN, and SCALES.RSC  are  located  
+in the same directory for the program to work correctly.
+
+
+Configuring the program
+-----------------------
+Run the program from either  the  backup  disk  or  the hard drive and
+choose the PATHS option in the Files menu.
+
+You can now set up  the  Printer  path,  tuning  path, scales path and
+defaults path. This is done  by  clicking  on  the  path file name and
+choosing a path with the file selector.
+
+Once all four paths have been set up choose the Save option.
+
+The program can  then  be  restarted  and  the  correct  files will be
+loaded.
+
+Please note that these changes will not take effect until the program is
+reloaded.
+
+
+
+Files on the disk     (Full Version)
+-----------------
+
+GUITAREF.PRG            -       the program
+PATHS.MAN               -       paths file                       
+SCALES.RSC              -       the resource file
+README.TXT              -       up to date info
+INSTALL.TXT             -       installation manual (this file)
+/DEMO/                  -    demo version
+        DEMO.ZIP        -       The demo archive
+        DEMO.TXT        -       Text file explaining the demo
+/DOCS/                  -    docs folder                          
+        INSTALL.TXT     -       installation manual (this file)
+        REFMAN.TXT      -       the reference manual
+        TECHMAN.TXT     -       technical documentation
+        PRINTMAN.TXT    -       printer driver manual
+        LICENSE.TXT     -       license documentation
+/EXAMPLES/              -    example default files                
+        HIRES.DEF       -       sample default for high res
+        LORES.DEF       -       sample default for low res
+        MEDRES.DEF      -       sample default for medium res
+/PDRIVERS/              -    printer drivers
+        EPSGRAF.DRV     -       driver for epson printers (graphics)
+        EPSTEXT.DRV     -       driver for epson printers (text)
+        IBMGRAF.DRV     -       driver for ibm printers (graphics)
+/SCALES/                -    scales files                        
+        ESCALES.SCL     -       scales in E
+/TUNINGS/               -    tunings files                       
+        INTERNET.TUN    -       sample tunings
+
+Files on the disk     (Shareware Version)
+-----------------
+
+GUITAREF.PRG            -       the program
+SCALES.RSC              -       the resource file
+README.TXT              -       up to date info
+INSTALL.TXT             -       installation manual (this file)
+REGISTER.TXT            -       how to register the program       
+/DOCS/                  -    docs folder                          
+        INSTALL.TXT     -       installation manual (this file)
+        REFMAN.TXT      -       the reference manual
+        TECHMAN.TXT     -       technical documentation
+        PRINTMAN.TXT    -       printer driver manual
+        LICENSE.TXT     -       license documentation
+        REGISTER.TXT    -       how to register the program       
+/PDRIVERS/              -    printer drivers
+        EPSGRAF.DRV     -       driver for epson printers (graphics)
+        EPSTEXT.DRV     -       driver for epson printers (text)
+        IBMGRAF.DRV     -       driver for ibm printers (graphics)
+
+
+

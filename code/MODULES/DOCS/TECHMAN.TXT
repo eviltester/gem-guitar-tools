@@ -1,0 +1,70 @@
+Guitar Reference      -      Technical Manual
+
+This document  is  the  technical  manual  for  the  Guitar  Reference
+program. It is not necessary to  read  this  manual to use the program
+but  it  provides  supplementary   documentation  about  the  programs
+development.
+
+The following programs were used to develop this program.
+
+   Lattice C V5 by HiSoft
+   WERCS by HiSoft
+
+My thanks go to the testers of this program.
+
+Myself on a 520STFM with 4 meg  of  memory, HD disk drive, Hard drive,
+Mono Monitor and Grundig TV.  Printer  Testing  done  on a BJ10E. Midi
+Testing done on a DR-SYNTH DS-330.
+
+Denesh Bhabuta on a 520STE with 4 meg of memory, HD disk drive, Hard Drive,
+Mono and colour monitor. Multi-Tos and other compatibility issues.
+
+Philip Shore on a Falcon.
+
+Known Bugs
+----------
+
+
+
+Bug fixes
+---------
+V1 fixes bug with tuning deletion
+
+Wish List
+---------
+
+GDOS Printing.
+Practice node.
+Note Test - fretboard and pitch.
+Resize by dragging frets.
+Related chords.
+Better window handling.
+Works as an accessory.
+Riffs.
+Music Notation.
+Keyboard scales and chords.
+Theory help files.
+On-Line Help.
+Amodal Dialogues.
+
+
+Wishes Granted
+--------------
+Display of scale as text.
+
+
+Version Information
+-------------------
+Version 0
+        February '93  HiSoft   Basic   Prototype   with  a  Zest-Like
+        interface.
+
+Version 1
+        October '93,  a GEM based implementation in Lattice C V5
+        November '93  manuals under way !    :-(
+        January '94   Play-testing underway
+
+Version 1.1
+        February '94  Display of scales as text.
+        July '94      finally released to the public (Enjoy :)
+
