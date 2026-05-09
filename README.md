@@ -1,6 +1,24 @@
 # GEM Guitar Tools
 
-GEM Guitar Tools started out as an Atari ST applcation
+GEM Guitar Tools started out as an Atari ST application, now it is an HTML/JS application which you can find deployed on gitpages.
+
+- https://eviltester.github.io/gem-guitar-tools/
+
+When I started writing this 30+ years ago, there were not many Guitar apps.
+
+Now there are many.
+
+Here are some other similar tools:
+
+- https://fretmap.app/
+- https://www.fachords.com/guitar-scale/
+- https://www.editor.guitarscientist.com/
+- https://freetboard.online/
+- https://fretastic.com/guitar
+- https://muted.io/guitar-fretboard/
+- https://fretlogic.studio/scale-finder
+- https://www.gibson.app/tools/scale-finder
+- https://guitar-fretboard-learning.web.app/
 
 ## History of gem-guitar-tools
 
@@ -14,9 +32,9 @@ I thought I had lost the source code, but stumbled across it. I can't remember w
 
 Looking through the code I can see that I wrote my own very crude printer drivers. Ah, the good old days.
 
-## Current Links
+## Links
 
-While getting this ready for release I looked online to see if I could find any references
+While getting this ready for original release I looked online to see if I could find any references
 
 http://www.atarimax.com/freenet/freenet_material/6.16and32-BitComputersSupportArea/8.OnlineMagazines/showarticle.php?479
 
@@ -27,17 +45,10 @@ A review of the software I didn't know about
 
 http://cd.textfiles.com/atarilibrary/atari_cd09/DOCUMENT/TEXTE/AEO_0407/AEO_0407.TXT
 
-apparently I had a web page for it at `www.wmin.ac.uk/~richara/guitaref.htm` but I don't remember what was there.
-
-It might even be the files in htmlpages:
+The original pages showcasing the Atari ST tool have been converted to markdown:
 
 - [/htmlpages/readme.md](./htmlpages/readme.md)
 
-## GitHub Pages
-
-Live web app (after deployment from `main`):
-
-- [https://<your-github-username>.github.io/gem-guitar-tools/](https://<your-github-username>.github.io/gem-guitar-tools/)
 
 Licence
 --------
