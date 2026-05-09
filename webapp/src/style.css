@@ -75,5 +75,8 @@ button { border: 1px solid #7c7056; background: #f7f2e6; padding: .35rem .65rem;
 .fret.root { background: var(--root); color: #fff; border: 2px solid var(--root-border); }
 .fret.off { background: var(--off); }
 .fret.rel { outline: 2px dashed #2f6b4f; }
+.fret.nut-divider { border-right: 4px solid #000; }
 pre { white-space: pre-wrap; }
 .tuning div { margin: .3rem 0; }
+.tippy-box { font-size: 12px; line-height: 1.35; }
+.tip strong { font-size: 13px; }

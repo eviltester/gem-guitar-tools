@@ -29,9 +29,13 @@ export function defaultState() {
       noteEmphasis: "none",
       rootEmphasis: "none",
       fretNumbering: "none",
+      fretCountMode: "24",
+      customFrets: 24,
+      openStringFretNumber: false,
+      openStringNut: false,
       firstFret: 5,
       fretIncrement: 5,
-      maxFrets: 25
+      maxFrets: 24
     },
     midi: {
       channel: 0,

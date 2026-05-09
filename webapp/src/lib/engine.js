@@ -19,11 +19,12 @@ export function computeFretboard(state) {
     const row = [];
     for (let fret = 0; fret < state.display.maxFrets; fret++) {
       const pitchClass = mod12(tuning.notes[s] + fret);
+      const octave = tuning.octaves[s] + Math.floor((tuning.notes[s] + fret) / 12);
       const isRoot = pitchClass === state.key;
       const inScale = !!currentNotes[pitchClass];
       const relativeIndex = mod12(pitchClass - state.key + 7);
       const isRelative = !!relativeRaw[relativeIndex] && state.display.showRelative;
-      row.push({ string: s + 1, fret, pitchClass, isRoot, inScale, isRelative });
+      row.push({ string: s + 1, fret, pitchClass, octave, isRoot, inScale, isRelative });
     }
     rows.push(row);
   }

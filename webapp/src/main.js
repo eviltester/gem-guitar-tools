@@ -1,4 +1,6 @@
 import "./style.css";
+import "tippy.js/dist/tippy.css";
+import tippy from "tippy.js";
 import { defaultState } from "./lib/state.js";
 import { computeFretboard, toggleScaleNoteByPitch, noteLabel, scaleNoteNames } from "./lib/engine.js";
 import { saveState, loadState, downloadText } from "./lib/storage.js";
@@ -19,6 +21,10 @@ state.display.sharpFlatEmphasis = ["none", "sharp", "flat"].includes(state.displ
 state.display.noteEmphasis = ["none", "emphasis"].includes(state.display.noteEmphasis) ? state.display.noteEmphasis : "none";
 state.display.rootEmphasis = ["none", "emphasis"].includes(state.display.rootEmphasis) ? state.display.rootEmphasis : "none";
 state.display.fretNumbering = ["none", "all", "5_7_12", "3_5_7_12", "1_3_5_7_12"].includes(state.display.fretNumbering) ? state.display.fretNumbering : "none";
+state.display.fretCountMode = ["5", "7", "12", "24", "custom"].includes(state.display.fretCountMode) ? state.display.fretCountMode : "24";
+state.display.customFrets = Math.min(40, Math.max(1, Number(state.display.customFrets) || 24));
+state.display.openStringFretNumber = !!state.display.openStringFretNumber;
+state.display.openStringNut = !!state.display.openStringNut;
 state.textPrint.showAs = state.textPrint.showAs === "text" ? "text" : "symbol";
 state.textPrint.fretNumbers = ["none", "all", "5_7_12", "3_5_7_12", "1_3_5_7_12"].includes(state.textPrint.fretNumbers) ? state.textPrint.fretNumbers : "none";
 
@@ -30,6 +36,17 @@ function normalizeScaleNames() {
   state.scales = state.scales.map((s) => ({ ...s, name: stripDefaultScalePrefix(s.name) }));
 }
 
+function stripDefaultTuningPrefix(name) {
+  return (name || "").replace(/^DEFAULT:\s*/i, "").trim();
+}
+
+function normalizeTuningNames() {
+  state.tunings = state.tunings.map((t) => ({ ...t, name: stripDefaultTuningPrefix(t.name) }));
+  if (!state.tunings.some((t) => t.builtIn) && state.tunings.length > 0) {
+    state.tunings[0].builtIn = true;
+  }
+}
+
 function sortScalesKeepCurrent() {
   normalizeScaleNames();
   const currentName = state.scales[state.currentScaleIndex]?.name;
@@ -38,6 +55,61 @@ function sortScalesKeepCurrent() {
     0,
     state.scales.findIndex((s) => s.name === currentName)
   );
+}
+
+function makeUniqueCopyName(baseName, scales) {
+  const names = new Set(scales.map((s) => s.name));
+  const plainCopy = `${baseName} (copy)`;
+  if (!names.has(plainCopy)) return plainCopy;
+  let i = 1;
+  while (names.has(`${baseName} (copy ${i})`)) i++;
+  return `${baseName} (copy ${i})`;
+}
+
+function ensureEditableCurrentScale() {
+  const current = state.scales[state.currentScaleIndex];
+  if (!current?.builtIn) return;
+  let customIndex = state.scales.findIndex((s) => !s.builtIn && s.name.toLowerCase() === "custom");
+  if (customIndex === -1) {
+    const customName = makeUniqueName("custom", state.scales);
+    state.scales.push({ name: customName, notes: [...current.notes], builtIn: false });
+    state.currentScaleIndex = state.scales.length - 1;
+    sortScalesKeepCurrent();
+    return;
+  }
+  state.scales[customIndex].notes = [...current.notes];
+  state.currentScaleIndex = customIndex;
+}
+
+function makeUniqueName(baseName, items) {
+  const names = new Set(items.map((x) => x.name));
+  if (!names.has(baseName)) return baseName;
+  let i = 1;
+  while (names.has(`${baseName} ${i}`)) i++;
+  return `${baseName} ${i}`;
+}
+
+function makeUniqueTuningCopyName(baseName, tunings) {
+  const names = new Set(tunings.map((t) => t.name));
+  const plainCopy = `${baseName} (copy)`;
+  if (!names.has(plainCopy)) return plainCopy;
+  let i = 1;
+  while (names.has(`${baseName} (copy ${i})`)) i++;
+  return `${baseName} (copy ${i})`;
+}
+
+function ensureEditableCurrentTuning() {
+  const current = state.tunings[state.currentTuningIndex];
+  if (!current?.builtIn) return;
+  const customName = makeUniqueName("custom", state.tunings);
+  const cloned = {
+    name: customName,
+    notes: [...current.notes],
+    octaves: [...current.octaves],
+    builtIn: false
+  };
+  state.tunings.push(cloned);
+  state.currentTuningIndex = state.tunings.length - 1;
 }
 
 function optionsForNotes() {
@@ -53,13 +125,24 @@ function shouldShowFretNumber(fret, mode) {
   return false;
 }
 
-function fretNumbersRow(maxFrets, mode) {
+function fretNumbersRow(maxFrets, mode, showOpenStringFretNumber, showNut) {
   const cells = [];
   for (let fret = 0; fret < maxFrets; fret++) {
-    const label = shouldShowFretNumber(fret, mode) ? fret : "";
-    cells.push(`<button class="fret fret-num-cell" tabindex="-1" aria-hidden="true">${label}</button>`);
+    const showLabel = fret === 0 ? showOpenStringFretNumber : shouldShowFretNumber(fret, mode);
+    const label = showLabel ? fret : "";
+    const nutClass = showNut && fret === 0 ? " nut-divider" : "";
+    cells.push(`<button class="fret fret-num-cell${nutClass}" tabindex="-1" aria-hidden="true">${label}</button>`);
   }
   return `<div class="string-row fret-num-row"><span class="string-label"></span>${cells.join("")}</div>`;
+}
+
+function resolveVisibleFrets(display) {
+  if (display.fretCountMode === "custom") {
+    return Math.min(40, Math.max(1, Number(display.customFrets) || 24));
+  }
+  const fromMode = Number(display.fretCountMode);
+  if ([5, 7, 12, 24].includes(fromMode)) return fromMode;
+  return 24;
 }
 
 function render() {
@@ -68,6 +151,8 @@ function render() {
   if (prevDisplay) displayOptionsOpen = prevDisplay.open;
   if (prevPrint) textPrintOptionsOpen = prevPrint.open;
 
+  state.display.maxFrets = resolveVisibleFrets(state.display);
+  normalizeTuningNames();
   const scale = state.scales[state.currentScaleIndex];
   const tuning = state.tunings[state.currentTuningIndex];
   const board = computeFretboard(state);
@@ -80,9 +165,9 @@ function render() {
       <button id="save-profile">Save Profile</button>
       <label>Key <select id="key-select">${optionsForNotes()}</select></label>
       <label>Scale <select id="scale-select">${state.scales.map((s,i)=>`<option value="${i}" ${i===state.currentScaleIndex?"selected":""}>${s.name}</option>`).join("")}</select></label>
-      <button id="new-scale">Store As</button>
-      <button id="rename-scale">Rename</button>
-      <button id="delete-scale">Delete</button>
+      <button id="new-scale">Copy</button>
+      <button id="rename-scale" ${scale?.builtIn ? "disabled" : ""}>Rename</button>
+      <button id="delete-scale" ${scale?.builtIn ? "disabled" : ""}>Delete</button>
     </div>
 
     <section class="panel">
@@ -124,18 +209,34 @@ function render() {
           <label><input type="radio" name="fret-numbering" value="3_5_7_12" ${state.display.fretNumbering === "3_5_7_12" ? "checked" : ""} /> 3/5/7/12</label>
           <label><input type="radio" name="fret-numbering" value="1_3_5_7_12" ${state.display.fretNumbering === "1_3_5_7_12" ? "checked" : ""} /> 1/3/5/7/12</label>
         </div>
+        <div class="option-row">
+          <span class="option-label">number of frets:</span>
+          <label><input type="radio" name="fret-count-mode" value="5" ${state.display.fretCountMode === "5" ? "checked" : ""} /> 5</label>
+          <label><input type="radio" name="fret-count-mode" value="7" ${state.display.fretCountMode === "7" ? "checked" : ""} /> 7</label>
+          <label><input type="radio" name="fret-count-mode" value="12" ${state.display.fretCountMode === "12" ? "checked" : ""} /> 12</label>
+          <label><input type="radio" name="fret-count-mode" value="24" ${state.display.fretCountMode === "24" ? "checked" : ""} /> 24</label>
+          <label><input type="radio" name="fret-count-mode" value="custom" ${state.display.fretCountMode === "custom" ? "checked" : ""} /> custom</label>
+          <input id="custom-frets" type="number" min="1" max="40" step="1" value="${state.display.customFrets}" ${state.display.fretCountMode === "custom" ? "" : "disabled"} />
+        </div>
+        <div class="option-row">
+          <span class="option-label">open string:</span>
+          <label><input type="checkbox" id="open-string-fret-number" ${state.display.openStringFretNumber ? "checked" : ""} /> fret#</label>
+          <label><input type="checkbox" id="open-string-nut" ${state.display.openStringNut ? "checked" : ""} /> nut</label>
+        </div>
       </details>
       <div class="fretboard">
-        ${fretNumbersRow(state.display.maxFrets, state.display.fretNumbering)}
+        ${fretNumbersRow(state.display.maxFrets, state.display.fretNumbering, state.display.openStringFretNumber, state.display.openStringNut)}
         ${board.map((row,ri)=>`<div class="string-row"><span class="string-label">S${ri+1}</span>${row.map((cell)=>{
           const cls = cell.isRoot ? "root" : cell.inScale ? "in" : "off";
           const rel = cell.isRelative ? " rel" : "";
+          const nutClass = state.display.openStringNut && cell.fret === 0 ? " nut-divider" : "";
           const text = state.display.noteShape === "text"
             ? (cell.isRoot || cell.inScale ? noteLabelMarkup(cell, state) : "")
             : symbolMarkup(cell, state);
-          return `<button class="fret ${cls}${rel}" data-pitch="${cell.pitchClass}" data-string="${cell.string}" data-fret="${cell.fret}">${text}</button>`;
+          const tooltip = fretTooltipContent(cell, state).replaceAll("\"", "&quot;");
+          return `<button class="fret ${cls}${rel}${nutClass}" data-pitch="${cell.pitchClass}" data-string="${cell.string}" data-fret="${cell.fret}" data-tooltip="${tooltip}">${text}</button>`;
         }).join("")}</div>`).join("")}
-        ${fretNumbersRow(state.display.maxFrets, state.display.fretNumbering)}
+        ${fretNumbersRow(state.display.maxFrets, state.display.fretNumbering, state.display.openStringFretNumber, state.display.openStringNut)}
       </div>
     </section>
 
@@ -143,7 +244,9 @@ function render() {
       <h2>Tuning</h2>
       <div>
         <label>Tuning Preset <select id="tuning-select">${state.tunings.map((t,i)=>`<option value="${i}" ${i===state.currentTuningIndex?"selected":""}>${t.name}</option>`).join("")}</select></label>
-        <button id="store-tuning">Store Tuning</button><button id="delete-tuning">Delete Tuning</button>
+        <button id="copy-tuning">Copy</button>
+        <button id="rename-tuning" ${tuning?.builtIn ? "disabled" : ""}>Rename</button>
+        <button id="delete-tuning" ${tuning?.builtIn ? "disabled" : ""}>Delete</button>
       </div>
       <div>
         <label>Duration (s) <input id="play-seconds" type="number" min="1" step="1" value="${state.tuningPlaySeconds}" /></label>
@@ -178,6 +281,7 @@ function render() {
   </main>`;
 
   wire();
+  initFretTooltips();
 }
 
 function symbolMarkup(cell, appState) {
@@ -205,6 +309,24 @@ function noteLabelMarkup(cell, appState) {
   const sharpClass = appState.display.sharpFlatEmphasis === "sharp" ? " emphasis" : "";
   const flatClass = appState.display.sharpFlatEmphasis === "flat" ? " emphasis" : "";
   return `<span class="note-dual${dualClass}"><span class="sharp${sharpClass}">${sharp}</span><span class="flat${flatClass}">${flat}</span></span>`;
+}
+
+function fretTooltipContent(cell, appState) {
+  const status = cell.isRoot ? "Root note" : (cell.inScale ? "In scale" : "Not in scale");
+  const note = noteLabel(cell.pitchClass, appState.noteNames, appState.noteAliases);
+  return `<div class='tip'><div><strong>${note}</strong></div><div>${status}</div><div>String: ${cell.string}</div><div>Fret: ${cell.fret}</div></div>`;
+}
+
+function initFretTooltips() {
+  tippy(".fret[data-tooltip]", {
+    allowHTML: true,
+    interactive: false,
+    delay: [120, 40],
+    maxWidth: 280,
+    content(reference) {
+      return reference.getAttribute("data-tooltip") || "";
+    }
+  });
 }
 
 function textPrintOutput() {
@@ -271,14 +393,15 @@ function wire() {
   app.querySelector("#key-select").onchange = (e) => { state.key = Number(e.target.value); render(); };
   app.querySelector("#scale-select").onchange = (e) => { state.currentScaleIndex = Number(e.target.value); render(); };
   app.querySelector("#new-scale").onclick = () => {
-    const name = prompt("Scale name", `${state.scales[state.currentScaleIndex].name} copy`);
-    if (!name) return;
-    state.scales.push({ name, notes: [...state.scales[state.currentScaleIndex].notes] });
+    const source = state.scales[state.currentScaleIndex];
+    const name = makeUniqueCopyName(source.name, state.scales);
+    state.scales.push({ name, notes: [...source.notes], builtIn: false });
     state.currentScaleIndex = state.scales.length - 1;
     sortScalesKeepCurrent();
     render();
   };
   app.querySelector("#rename-scale").onclick = () => {
+    if (state.scales[state.currentScaleIndex]?.builtIn) return;
     const name = prompt("Rename scale", state.scales[state.currentScaleIndex].name);
     if (!name) return;
     state.scales[state.currentScaleIndex].name = name;
@@ -286,13 +409,22 @@ function wire() {
     render();
   };
   app.querySelector("#delete-scale").onclick = () => {
+    if (state.scales[state.currentScaleIndex]?.builtIn) return;
     if (state.scales.length < 2) return;
     state.scales.splice(state.currentScaleIndex, 1);
     state.currentScaleIndex = Math.max(0, state.currentScaleIndex - 1);
     render();
   };
-  app.querySelectorAll(".note-toggle").forEach((b)=>b.onclick = (e)=>{ toggleScaleNoteByPitch(state, Number(e.target.dataset.note)); render(); });
-  app.querySelectorAll(".fret").forEach((b)=>b.onclick = (e)=>{ toggleScaleNoteByPitch(state, Number(e.currentTarget.dataset.pitch)); render(); });
+  app.querySelectorAll(".note-toggle").forEach((b)=>b.onclick = (e)=>{
+    ensureEditableCurrentScale();
+    toggleScaleNoteByPitch(state, Number(e.target.dataset.note));
+    render();
+  });
+  app.querySelectorAll(".fret").forEach((b)=>b.onclick = (e)=>{
+    ensureEditableCurrentScale();
+    toggleScaleNoteByPitch(state, Number(e.currentTarget.dataset.pitch));
+    render();
+  });
   app.querySelectorAll("input[name='fret-show-mode']").forEach((el) => {
     el.onchange = (e) => {
       state.display.noteShape = e.target.value === "text" ? "text" : "circle";
@@ -323,6 +455,26 @@ function wire() {
       render();
     };
   });
+  app.querySelectorAll("input[name='fret-count-mode']").forEach((el) => {
+    el.onchange = (e) => {
+      state.display.fretCountMode = e.target.value;
+      render();
+    };
+  });
+  app.querySelector("#custom-frets").onchange = (e) => {
+    const n = Math.min(40, Math.max(1, Number(e.target.value) || 24));
+    state.display.customFrets = n;
+    state.display.fretCountMode = "custom";
+    render();
+  };
+  app.querySelector("#open-string-fret-number").onchange = (e) => {
+    state.display.openStringFretNumber = e.target.checked;
+    render();
+  };
+  app.querySelector("#open-string-nut").onchange = (e) => {
+    state.display.openStringNut = e.target.checked;
+    render();
+  };
   app.querySelectorAll("input[name='print-show-mode']").forEach((el) => {
     el.onchange = (e) => {
       state.textPrint.showAs = e.target.value === "text" ? "text" : "symbol";
@@ -339,18 +491,34 @@ function wire() {
   });
 
   app.querySelector("#tuning-select").onchange = (e) => { state.currentTuningIndex = Number(e.target.value); render(); };
-  app.querySelectorAll(".tune-note").forEach((el)=>el.onchange = (e)=>{ state.tunings[state.currentTuningIndex].notes[Number(e.target.dataset.index)] = Number(e.target.value); render(); });
-  app.querySelectorAll(".tune-oct").forEach((el)=>el.onchange = (e)=>{ state.tunings[state.currentTuningIndex].octaves[Number(e.target.dataset.index)] = Number(e.target.value); render(); });
-  app.querySelector("#store-tuning").onclick = () => {
-    const name = prompt("Store tuning as", `${state.tunings[state.currentTuningIndex].name} copy`);
-    if (!name) return;
-    const t = state.tunings[state.currentTuningIndex];
-    state.tunings.push({ name, notes:[...t.notes], octaves:[...t.octaves] });
+  app.querySelectorAll(".tune-note").forEach((el)=>el.onchange = (e)=>{
+    ensureEditableCurrentTuning();
+    state.tunings[state.currentTuningIndex].notes[Number(e.target.dataset.index)] = Number(e.target.value);
+    render();
+  });
+  app.querySelectorAll(".tune-oct").forEach((el)=>el.onchange = (e)=>{
+    ensureEditableCurrentTuning();
+    state.tunings[state.currentTuningIndex].octaves[Number(e.target.dataset.index)] = Number(e.target.value);
+    render();
+  });
+  app.querySelector("#copy-tuning").onclick = () => {
+    const source = state.tunings[state.currentTuningIndex];
+    const name = makeUniqueTuningCopyName(source.name, state.tunings);
+    state.tunings.push({ name, notes:[...source.notes], octaves:[...source.octaves], builtIn: false });
     state.currentTuningIndex = state.tunings.length - 1;
+    render();
+  };
+  app.querySelector("#rename-tuning").onclick = () => {
+    const t = state.tunings[state.currentTuningIndex];
+    if (t?.builtIn) return;
+    const name = prompt("Rename tuning", t.name);
+    if (!name) return;
+    t.name = stripDefaultTuningPrefix(name);
     render();
   };
   app.querySelector("#delete-tuning").onclick = () => {
     if (state.tunings.length < 2) return;
+    if (state.tunings[state.currentTuningIndex]?.builtIn) return;
     state.tunings.splice(state.currentTuningIndex, 1);
     state.currentTuningIndex = Math.max(0, state.currentTuningIndex - 1);
     render();
