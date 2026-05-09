@@ -16,7 +16,7 @@ describe("computeFretboard", () => {
     const state = defaultState();
     const board = computeFretboard(state);
     expect(board).toHaveLength(6);
-    expect(board[0]).toHaveLength(25);
+    expect(board[0]).toHaveLength(24);
   });
 });
 

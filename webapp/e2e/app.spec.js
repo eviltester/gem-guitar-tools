@@ -1,15 +1,16 @@
 import { test, expect } from "@playwright/test";
 
-test("renders and previews text", async ({ page }) => {
+test("renders and shows text print preview", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { name: "Guitar Reference" })).toBeVisible();
-  await page.getByRole("button", { name: "Preview Text" }).click();
+  await page.locator("#tab-textprint").click();
   await expect(page.locator("#text-preview")).toContainText("Scale:");
 });
 
-test("store as adds a scale", async ({ page }) => {
+test("copy adds a scale after creating custom", async ({ page }) => {
   await page.goto("/");
-  page.once("dialog", (d) => d.accept("E2E Scale"));
-  await page.getByRole("button", { name: "Store As" }).click();
-  await expect(page.locator("#scale-select")).toContainText("E2E Scale");
+  // Built-ins are protected; first toggle a note to create/select custom.
+  await page.locator(".note-toggle").first().click();
+  await page.getByRole("button", { name: "Copy" }).click();
+  await expect(page.locator("#scale-select")).toContainText("(copy)");
 });
