@@ -1,4 +1,4 @@
-import { NOTE_NAMES, NOTE_ALIASES, DEFAULT_SCALE_BANK, DEFAULT_TUNING } from "./constants.js";
+import { NOTE_NAMES, NOTE_ALIASES, DEFAULT_SCALE_BANK, BUILT_IN_TUNINGS } from "./constants.js";
 
 /** @typedef {{name:string, notes:number[]}} Scale */
 /** @typedef {{name:string, notes:number[], octaves:number[]}} Tuning */
@@ -16,7 +16,7 @@ export function defaultState() {
     root: 7,
     scales: structuredClone(DEFAULT_SCALE_BANK),
     currentScaleIndex: 0,
-    tunings: [structuredClone(DEFAULT_TUNING)],
+    tunings: structuredClone(BUILT_IN_TUNINGS),
     currentTuningIndex: 0,
     display: {
       showRoot: true,
@@ -54,7 +54,11 @@ export function defaultState() {
       noFrets: 12,
       tab: 4,
       showAs: "symbol",
-      fretNumbers: "none"
+      fretNumbers: "none",
+      fretCountMode: "24",
+      customFrets: 24,
+      openStringFretNumber: false,
+      openStringNut: false
     }
   };
 }

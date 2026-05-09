@@ -13,6 +13,12 @@ main { max-width: 1200px; margin: 0 auto; padding: 1rem; }
 h1 { letter-spacing: .08em; text-transform: uppercase; }
 .toolbar, .panel { background: var(--panel); border: 1px solid #c2b9a3; border-radius: 10px; padding: .8rem; margin-bottom: .8rem; }
 .toolbar { display: flex; gap: .5rem; flex-wrap: wrap; align-items: center; }
+.save-notice { display: none; color: #2d6b3f; font-weight: 600; }
+.save-notice.visible { display: inline; }
+.tabs { display: flex; gap: .4rem; margin-bottom: .7rem; }
+.tab-btn { border: 1px solid #7c7056; background: #efe7d8; padding: .35rem .75rem; }
+.tab-btn.active { background: #fffaf0; border-bottom: 2px solid #2f6b4f; font-weight: 700; }
+.tab-content { padding-top: .1rem; }
 .fret-options summary { cursor: pointer; font-weight: bold; margin-bottom: .45rem; }
 .option-row { display: flex; align-items: center; flex-wrap: wrap; gap: .6rem; margin: .25rem 0; }
 .option-label { display: inline-block; width: 120px; font-weight: 600; text-transform: lowercase; }

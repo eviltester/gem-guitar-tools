@@ -9,6 +9,14 @@ export function loadState() {
   return raw ? JSON.parse(raw) : null;
 }
 
+export function hasSavedState() {
+  return !!localStorage.getItem(STORAGE_KEY);
+}
+
+export function deleteState() {
+  localStorage.removeItem(STORAGE_KEY);
+}
+
 export function downloadBuffer(filename, buffer) {
   const blob = new Blob([buffer]);
   const url = URL.createObjectURL(blob);
