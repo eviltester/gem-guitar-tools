@@ -33,12 +33,36 @@ It might even be the files in htmlpages:
 
 - [/htmlpages/readme.md](./htmlpages/readme.md)
 
+## GitHub Pages
+
+Live web app (after deployment from `main`):
+
+- [https://<your-github-username>.github.io/gem-guitar-tools/](https://<your-github-username>.github.io/gem-guitar-tools/)
+
 Licence
 --------
 Ignore any licence text you find inside the code or archive. I hereby release this thing into the public domain 12/12/2012 - do what thou wilt with it.
 
+## Playwright Execution
 
+From `webapp`, run end-to-end tests with a visible browser:
 
+```bash
+npm run test:e2e -- --headed
+```
+
+Useful variants:
+
+```bash
+# Run with one worker (easier to watch)
+npm run test:e2e -- --headed --workers=1
+
+# Step-through debug mode
+npm run test:e2e -- --debug
+
+# Open Playwright UI mode
+npx playwright test --ui
+```
 
 
 

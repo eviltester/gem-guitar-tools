@@ -221,7 +221,7 @@ function render() {
     <div class="toolbar">
       <label>Key <select id="key-select">${optionsForNotes()}</select></label>
       <label>Scale <select id="scale-select">${state.scales.map((s,i)=>`<option value="${i}" ${i===state.currentScaleIndex?"selected":""}>${s.name}</option>`).join("")}</select></label>
-      <button id="new-scale" ${scale?.builtIn ? "disabled" : ""}>Copy</button>
+      <button id="new-scale">Copy</button>
       <button id="rename-scale" ${scale?.builtIn ? "disabled" : ""}>Rename</button>
       <button id="delete-scale" ${scale?.builtIn ? "disabled" : ""}>Delete</button>
     </div>
@@ -237,11 +237,11 @@ function render() {
       <div class="fretboard">
         ${fretNumbersRow(state.display.maxFrets, state.display.fretNumbering, state.display.openStringFretNumber, state.display.openStringNut)}
         ${board.map((row,ri)=>`<div class="string-row"><span class="string-label">S${ri+1}</span>${row.map((cell)=>{
-          const cls = cell.isRoot ? "root" : cell.inScale ? "in" : "off";
+          const cls = cell.inScale ? (cell.isRoot ? "root" : "in") : "off";
           const rel = cell.isRelative ? " rel" : "";
           const nutClass = state.display.openStringNut && cell.fret === 0 ? " nut-divider" : "";
           const text = state.display.noteShape === "text"
-            ? (cell.isRoot || cell.inScale ? noteLabelMarkup(cell, state) : "")
+            ? (cell.inScale ? noteLabelMarkup(cell, state) : "")
             : symbolMarkup(cell, state);
           const tooltip = fretTooltipContent(cell, state).replaceAll("\"", "&quot;");
           return `<button class="fret ${cls}${rel}${nutClass}" data-pitch="${cell.pitchClass}" data-string="${cell.string}" data-fret="${cell.fret}" data-tooltip="${tooltip}">${text}</button>`;
@@ -375,7 +375,7 @@ function render() {
 }
 
 function symbolMarkup(cell, appState) {
-  if (cell.isRoot) {
+  if (cell.isRoot && cell.inScale) {
     return `<span>.</span>`;
   }
   if (cell.inScale) {
@@ -388,13 +388,13 @@ function noteLabelMarkup(cell, appState) {
   const label = noteLabel(cell.pitchClass, appState.noteNames, appState.noteAliases);
 
   if (!label.includes("/")) {
-    const singleClass = cell.isRoot
+    const singleClass = (cell.isRoot && cell.inScale)
       ? (appState.display.rootEmphasis === "emphasis" ? " emphasis" : "")
       : (appState.display.noteEmphasis === "emphasis" ? " emphasis" : "");
     return `<span class="note-single${singleClass}">${label}</span>`;
   }
 
-  const dualClass = cell.isRoot && appState.display.rootEmphasis === "emphasis" ? " emphasis" : "";
+  const dualClass = (cell.isRoot && cell.inScale && appState.display.rootEmphasis === "emphasis") ? " emphasis" : "";
   const [sharp, flat] = label.split("/");
   const sharpClass = appState.display.sharpFlatEmphasis === "sharp" ? " emphasis" : "";
   const flatClass = appState.display.sharpFlatEmphasis === "flat" ? " emphasis" : "";
@@ -498,7 +498,6 @@ function wire() {
   app.querySelector("#scale-select").onchange = (e) => { state.currentScaleIndex = Number(e.target.value); render(); };
   app.querySelector("#new-scale").onclick = () => {
     const source = state.scales[state.currentScaleIndex];
-    if (source?.builtIn) return;
     const name = makeUniqueCopyName(source.name, state.scales);
     state.scales.push({ name, notes: [...source.notes], builtIn: false });
     state.currentScaleIndex = state.scales.length - 1;
